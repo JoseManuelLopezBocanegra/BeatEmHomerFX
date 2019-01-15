@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -28,6 +31,10 @@ public class Main extends Application {
         primaryStage.setTitle("Beat Em Homer");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        Image fondo = new Image(getClass().getResourceAsStream("images/Fondo 2.png")) {};
+        ImageView fondoview1 = new ImageView(fondo);
+        root.getChildren().add(fondoview1);
         
         Rectangle cabeza = new Rectangle();
         cabeza.setX(10);
@@ -144,6 +151,46 @@ public class Main extends Application {
         pierna2.setHeight(20);
         pierna2.setFill(Color.YELLOW);
         root.getChildren().add(pierna2);
+    
+        Rectangle zapato1 = new Rectangle();
+        zapato1.setX(50);
+        zapato1.setY(220);
+        zapato1.setWidth(15);
+        zapato1.setHeight(20);
+        zapato1.setFill(Color.BLUE);
+        root.getChildren().add(zapato1);
+        
+        Rectangle zapato2 = new Rectangle();
+        zapato2.setX(15);
+        zapato2.setY(220);
+        zapato2.setWidth(15);
+        zapato2.setHeight(20);
+        zapato2.setFill(Color.BLUE);
+        root.getChildren().add(zapato2);
+    
+        Group groupPersonaje = new Group();
+        groupPersonaje.getChildren().add(cabeza);
+        groupPersonaje.getChildren().add(nariz);
+        groupPersonaje.getChildren().add(bola);
+        groupPersonaje.getChildren().add(bola2);
+        groupPersonaje.getChildren().add(bola3);
+        groupPersonaje.getChildren().add(bola4);
+        groupPersonaje.getChildren().add(camiseta);
+        groupPersonaje.getChildren().add(brazo1);
+        groupPersonaje.getChildren().add(brazo2);
+        groupPersonaje.getChildren().add(manga1);
+        groupPersonaje.getChildren().add(manga2);
+        groupPersonaje.getChildren().add(boca);
+        groupPersonaje.getChildren().add(pantalon);
+        groupPersonaje.getChildren().add(pierna1);
+        groupPersonaje.getChildren().add(pierna2);
+        groupPersonaje.getChildren().add(zapato1);
+        groupPersonaje.getChildren().add(zapato2);
+        
+        groupPersonaje.setLayoutX(250);
+        groupPersonaje.setLayoutY(200);
+        
+        root.getChildren().add(groupPersonaje);
     }
     /**
      * @param args the command line arguments
