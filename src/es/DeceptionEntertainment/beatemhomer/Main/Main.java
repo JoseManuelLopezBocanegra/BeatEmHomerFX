@@ -5,6 +5,7 @@
  */
 package es.deceptionentertainment.beatemhomer.Main;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.shape.Circle;
 import javafx.scene.Scene;
@@ -23,19 +24,21 @@ import javafx.scene.image.ImageView;
  * @author Manu López
  */
 public class Main extends Application {
+    int personajeX = 550;
+    int velocidadX = 3;
     
     @Override
     public void start(Stage primaryStage) {
         Pane root = new Pane();
-        Scene scene = new Scene(root, 600, 450);
+        Scene scene = new Scene(root, 1452, 815);
         primaryStage.setTitle("Beat Em Homer");
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        Image fondo = new Image(getClass().getResourceAsStream("images/Fondo 2.png")) {};
+        Image fondo = new Image(getClass().getResourceAsStream("images/fondo.png")) {};
         ImageView fondoview1 = new ImageView(fondo);
         root.getChildren().add(fondoview1);
-        
+                
         Rectangle cabeza = new Rectangle();
         cabeza.setX(10);
         cabeza.setY(0);
@@ -187,10 +190,26 @@ public class Main extends Application {
         groupPersonaje.getChildren().add(zapato1);
         groupPersonaje.getChildren().add(zapato2);
         
-        groupPersonaje.setLayoutX(250);
-        groupPersonaje.setLayoutY(200);
+        groupPersonaje.setLayoutX(550);
+        groupPersonaje.setLayoutY(550);
         
         root.getChildren().add(groupPersonaje);
+        
+        AnimationTimer animacionPersonaje = new AnimationTimer() {
+            @Override
+            public void handle(long how) {
+                groupPersonaje.setLayoutX(personajeX);
+                personajeX+=velocidadX;
+                
+                if (personajeX >= 1350){
+                    velocidadX = -3;
+                }
+                if (personajeX <= 20){
+                    velocidadX = 3;
+                }
+            }
+        };
+        animacionPersonaje.start();
     }
     /**
      * @param args the command line arguments
