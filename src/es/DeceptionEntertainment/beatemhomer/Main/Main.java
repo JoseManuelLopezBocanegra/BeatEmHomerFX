@@ -26,6 +26,8 @@ import javafx.scene.image.ImageView;
 public class Main extends Application {
     int personajeX = 550;
     int velocidadX = 3;
+    int skinnerVolador = 30;
+    int velocidadSkinner = 3;
     
     @Override
     public void start(Stage primaryStage) {
@@ -38,6 +40,20 @@ public class Main extends Application {
         Image fondo = new Image(getClass().getResourceAsStream("images/fondo.png")) {};
         ImageView fondoview1 = new ImageView(fondo);
         root.getChildren().add(fondoview1);
+        
+        Image bart1 = new Image(getClass().getResourceAsStream("images/Bart.gif")) {};
+        ImageView bartview1 = new ImageView(bart1);
+        bartview1.setLayoutX(650);
+        bartview1.setLayoutY(500);
+        bartview1.setScaleX(0.9);
+        bartview1.setScaleY(0.9);
+        root.getChildren().add(bartview1);
+        
+        Image skinner = new Image(getClass().getResourceAsStream("images/Skinner.png")) {};
+        ImageView skinnerview = new ImageView(skinner);
+        skinnerview.setScaleX(0.6);
+        skinnerview.setScaleY(0.6);
+        root.getChildren().add(skinnerview);
                 
         Rectangle cabeza = new Rectangle();
         cabeza.setX(10);
@@ -171,34 +187,42 @@ public class Main extends Application {
         zapato2.setFill(Color.BLUE);
         root.getChildren().add(zapato2);
     
-        Group groupPersonaje = new Group();
-        groupPersonaje.getChildren().add(cabeza);
-        groupPersonaje.getChildren().add(nariz);
-        groupPersonaje.getChildren().add(bola);
-        groupPersonaje.getChildren().add(bola2);
-        groupPersonaje.getChildren().add(bola3);
-        groupPersonaje.getChildren().add(bola4);
-        groupPersonaje.getChildren().add(camiseta);
-        groupPersonaje.getChildren().add(brazo1);
-        groupPersonaje.getChildren().add(brazo2);
-        groupPersonaje.getChildren().add(manga1);
-        groupPersonaje.getChildren().add(manga2);
-        groupPersonaje.getChildren().add(boca);
-        groupPersonaje.getChildren().add(pantalon);
-        groupPersonaje.getChildren().add(pierna1);
-        groupPersonaje.getChildren().add(pierna2);
-        groupPersonaje.getChildren().add(zapato1);
-        groupPersonaje.getChildren().add(zapato2);
+        Group groupBart = new Group();
+        groupBart.getChildren().add(cabeza);
+        groupBart.getChildren().add(nariz);
+        groupBart.getChildren().add(bola);
+        groupBart.getChildren().add(bola2);
+        groupBart.getChildren().add(bola3);
+        groupBart.getChildren().add(bola4);
+        groupBart.getChildren().add(camiseta);
+        groupBart.getChildren().add(brazo1);
+        groupBart.getChildren().add(brazo2);
+        groupBart.getChildren().add(manga1);
+        groupBart.getChildren().add(manga2);
+        groupBart.getChildren().add(boca);
+        groupBart.getChildren().add(pantalon);
+        groupBart.getChildren().add(pierna1);
+        groupBart.getChildren().add(pierna2);
+        groupBart.getChildren().add(zapato1);
+        groupBart.getChildren().add(zapato2);
         
-        groupPersonaje.setLayoutX(550);
-        groupPersonaje.setLayoutY(550);
+        groupBart.setLayoutX(600);
+        groupBart.setLayoutY(600);
+        groupBart.setScaleX(0.4);
+        groupBart.setScaleY(0.4);
         
-        root.getChildren().add(groupPersonaje);
+        root.getChildren().add(groupBart);
+        
+        Image roca = new Image(getClass().getResourceAsStream("images/Roca.png")) {};
+        ImageView rocaview1 = new ImageView(roca);
+        rocaview1.setScaleX(0.06);
+        rocaview1.setScaleY(0.06);
+        root.getChildren().add(rocaview1);
         
         AnimationTimer animacionPersonaje = new AnimationTimer() {
             @Override
             public void handle(long how) {
-                groupPersonaje.setLayoutX(personajeX);
+                groupBart.setLayoutX(personajeX);
                 personajeX+=velocidadX;
                 
                 if (personajeX >= 1350){
@@ -206,6 +230,17 @@ public class Main extends Application {
                 }
                 if (personajeX <= 20){
                     velocidadX = 3;
+                }
+                
+                skinnerview.setLayoutX(skinnerVolador);
+                skinnerVolador+=velocidadSkinner;
+                
+                if (skinnerVolador >= 1550){
+                    velocidadSkinner = -3;
+                }
+                
+                if (skinnerVolador <= -250){
+                    velocidadSkinner = 3;
                 }
             }
         };
