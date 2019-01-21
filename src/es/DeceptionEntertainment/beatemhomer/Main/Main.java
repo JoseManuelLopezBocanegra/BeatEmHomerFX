@@ -7,6 +7,7 @@ package es.deceptionentertainment.beatemhomer.Main;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.shape.Circle;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -18,6 +19,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+
+
 
 /**
  *
@@ -28,6 +32,9 @@ public class Main extends Application {
     int velocidadX = 3;
     int skinnerVolador = 30;
     int velocidadSkinner = 3;
+    int skinnerCorriendo = 50;
+    int velocidadSkinner2 = 1;
+    int movimientoBart = 0;
     
     @Override
     public void start(Stage primaryStage) {
@@ -219,6 +226,14 @@ public class Main extends Application {
         rocaview1.setScaleY(0.06);
         root.getChildren().add(rocaview1);
         
+        Image skinner2 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        ImageView skinnerview2 = new ImageView (skinner2);
+        skinnerview2.setScaleX(0.6);
+        skinnerview2.setScaleY(0.6);
+        skinnerview2.setLayoutX(30);
+        skinnerview2.setLayoutY(50);
+        root.getChildren().add(skinnerview2);
+        
         AnimationTimer animacionPersonaje = new AnimationTimer() {
             @Override
             public void handle(long how) {
@@ -242,9 +257,38 @@ public class Main extends Application {
                 if (skinnerVolador <= -250){
                     velocidadSkinner = 3;
                 }
+                
+                skinnerview2.setLayoutX(skinnerCorriendo);
+                skinnerCorriendo+=velocidadSkinner2;
+                
+                if (skinnerCorriendo >=90){
+                    velocidadSkinner2 = -1;
+                }
+                
+                if (skinnerCorriendo <=50){
+                    velocidadSkinner2 = 1;
+                }
             }
         };
         animacionPersonaje.start();
+        
+         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch(event.getCode()) {
+                    case RIGHT;
+                        movimientoBart = -2;
+                        break;
+                    case LEFT;
+                        movimientoBart = 2;
+                        break
+            }
+        }
+    });
+         scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+             movimientoBart = 0;
+         });
+            
     }
     /**
      * @param args the command line arguments
