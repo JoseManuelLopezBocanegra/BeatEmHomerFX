@@ -32,10 +32,14 @@ public class Main extends Application {
     int velocidadX = 3;
     int skinnerVolador = 30;
     int velocidadSkinner = 3;
-    int skinnerCorriendo = 50;
+    int skinnerCorriendo1 = 50;
     int velocidadSkinner2 = 1;
     int movimientoBart = 0;
-    
+    int skinnerCorriendo2 = 160;
+    int skinnerCorriendo3 = 270;
+    int skinnerCorriendo4 = 380;
+    int skinnerCorriendo5 = 490;
+            
     @Override
     public void start(Stage primaryStage) {
         Pane root = new Pane();
@@ -48,19 +52,74 @@ public class Main extends Application {
         ImageView fondoview1 = new ImageView(fondo);
         root.getChildren().add(fondoview1);
         
-        Image bart1 = new Image(getClass().getResourceAsStream("images/Bart.gif")) {};
-        ImageView bartview1 = new ImageView(bart1);
-        bartview1.setLayoutX(650);
-        bartview1.setLayoutY(500);
-        bartview1.setScaleX(0.9);
-        bartview1.setScaleY(0.9);
-        root.getChildren().add(bartview1);
+        Image lisa1 = new Image(getClass().getResourceAsStream("images/Lisa.gif")) {};
+        ImageView lisaview1 = new ImageView(lisa1);
+        lisaview1.setLayoutX(250);
+        lisaview1.setLayoutY(450);
+        lisaview1.setScaleX(0.4);
+        lisaview1.setScaleY(0.4);
+        root.getChildren().add(lisaview1);
         
         Image skinner = new Image(getClass().getResourceAsStream("images/Skinner.png")) {};
         ImageView skinnerview = new ImageView(skinner);
         skinnerview.setScaleX(0.6);
         skinnerview.setScaleY(0.6);
         root.getChildren().add(skinnerview);
+        
+        Image roca = new Image(getClass().getResourceAsStream("images/Roca.png")) {};
+        ImageView rocaview1 = new ImageView(roca);
+        rocaview1.setScaleX(0.06);
+        rocaview1.setScaleY(0.06);
+        root.getChildren().add(rocaview1);
+        
+        Image skinner1 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        ImageView skinnerview1 = new ImageView (skinner1);
+        skinnerview1.setScaleX(0.8);
+        skinnerview1.setScaleY(0.8);
+        skinnerview1.setLayoutX(100);
+        skinnerview1.setLayoutY(50);
+        root.getChildren().add(skinnerview1);
+        
+        Image skinner2 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        ImageView skinnerview2 = new ImageView (skinner2);
+        skinnerview2.setScaleX(0.8);
+        skinnerview2.setScaleY(0.8);
+        skinnerview2.setLayoutX(300);
+        skinnerview2.setLayoutY(50);
+        root.getChildren().add(skinnerview2);
+        
+        Image skinner3 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        ImageView skinnerview3 = new ImageView (skinner3);
+        skinnerview3.setScaleX(0.8);
+        skinnerview3.setScaleY(0.8);
+        skinnerview3.setLayoutX(500);
+        skinnerview3.setLayoutY(50);
+        root.getChildren().add(skinnerview3);
+        
+        Image skinner4 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        ImageView skinnerview4 = new ImageView (skinner4);
+        skinnerview4.setScaleX(0.8);
+        skinnerview4.setScaleY(0.8);
+        skinnerview4.setLayoutX(700);
+        skinnerview4.setLayoutY(50);
+        root.getChildren().add(skinnerview4);
+        
+        Image skinner5 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        ImageView skinnerview5 = new ImageView (skinner5);
+        skinnerview5.setScaleX(0.8);
+        skinnerview5.setScaleY(0.8);
+        skinnerview5.setLayoutX(900);
+        skinnerview5.setLayoutY(50);
+        root.getChildren().add(skinnerview5);
+        /*
+        Image bob1 = new Image (getClass().getResourceAsStream("images/Bob.gif")) {};
+        ImageView bobview1 = new ImageView (bob1);
+        bobview1.setScaleX(0.55);
+        bobview1.setScaleY(0.55);
+        bobview1.setLayoutX(50);
+        bobview1.setLayoutY(50);
+        root.getChildren().add(bobview1);
+        */
                 
         Rectangle cabeza = new Rectangle();
         cabeza.setX(10);
@@ -220,31 +279,16 @@ public class Main extends Application {
         
         root.getChildren().add(groupBart);
         
-        Image roca = new Image(getClass().getResourceAsStream("images/Roca.png")) {};
-        ImageView rocaview1 = new ImageView(roca);
-        rocaview1.setScaleX(0.06);
-        rocaview1.setScaleY(0.06);
-        root.getChildren().add(rocaview1);
-        
-        Image skinner2 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
-        ImageView skinnerview2 = new ImageView (skinner2);
-        skinnerview2.setScaleX(0.6);
-        skinnerview2.setScaleY(0.6);
-        skinnerview2.setLayoutX(30);
-        skinnerview2.setLayoutY(50);
-        root.getChildren().add(skinnerview2);
-        
         AnimationTimer animacionPersonaje = new AnimationTimer() {
             @Override
             public void handle(long how) {
                 groupBart.setLayoutX(personajeX);
-                personajeX+=velocidadX;
-                
-                if (personajeX >= 1350){
-                    velocidadX = -3;
+                personajeX += movimientoBart;
+                if(personajeX <0) {
+                    personajeX = 0;
                 }
-                if (personajeX <= 20){
-                    velocidadX = 3;
+                if(personajeX >1375) {
+                    personajeX = 1375;
                 }
                 
                 skinnerview.setLayoutX(skinnerVolador);
@@ -258,37 +302,44 @@ public class Main extends Application {
                     velocidadSkinner = 3;
                 }
                 
-                skinnerview2.setLayoutX(skinnerCorriendo);
-                skinnerCorriendo+=velocidadSkinner2;
+                skinnerview1.setLayoutX(skinnerCorriendo1);
+                skinnerCorriendo1+=velocidadSkinner2;
                 
-                if (skinnerCorriendo >=90){
+                if (skinnerCorriendo1 >=150){
                     velocidadSkinner2 = -1;
                 }
                 
-                if (skinnerCorriendo <=50){
+                if (skinnerCorriendo1 <=50){
+                    velocidadSkinner2 = 1;
+                }
+                
+                skinnerview2.setLayoutX(skinnerCorriendo2);
+                skinnerCorriendo2+=velocidadSkinner2;
+                
+                if (skinnerCorriendo2 >=280){
+                    velocidadSkinner2 = -1;
+                }
+                
+                if (skinnerCorriendo2 <=180){
                     velocidadSkinner2 = 1;
                 }
             }
         };
         animacionPersonaje.start();
         
-         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch(event.getCode()) {
-                    case RIGHT;
-                        movimientoBart = -2;
-                        break;
-                    case LEFT;
-                        movimientoBart = 2;
-                        break
-            }
-        }
-    });
-         scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+         scene.setOnKeyPressed((KeyEvent event) -> {
+             switch(event.getCode()) {
+                 case RIGHT:
+                     movimientoBart = 4;
+                     break;
+                 case LEFT:
+                     movimientoBart = -4;
+                     break;
+             }
+        }); 
+         scene.setOnKeyReleased((KeyEvent event) -> {
              movimientoBart = 0;
-         });
-            
+        });
     }
     /**
      * @param args the command line arguments
