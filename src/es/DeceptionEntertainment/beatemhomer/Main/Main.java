@@ -32,13 +32,17 @@ public class Main extends Application {
     int velocidadX = 3;
     int skinnerVolador = 30;
     int velocidadSkinner = 3;
-    int skinnerCorriendo1 = 50;
-    int velocidadSkinner2 = 1;
+    int velocidadSkinner2 = 0;
+    int velocidadSkinner3 = 0;
+    int velocidadSkinner4 = 0;
+    int velocidadSkinner5 = 0;
+    int velocidadSkinner6 = 0;
     int movimientoBart = 0;
-    int skinnerCorriendo2 = 160;
-    int skinnerCorriendo3 = 270;
-    int skinnerCorriendo4 = 380;
-    int skinnerCorriendo5 = 490;
+    int skinnerCorriendo1 = 50;
+    int skinnerCorriendo2 = 250;
+    int skinnerCorriendo3 = 250*2;
+    int skinnerCorriendo4 = 250*3;
+    int skinnerCorriendo5 = 250*4;
             
     @Override
     public void start(Stage primaryStage) {
@@ -74,40 +78,40 @@ public class Main extends Application {
         
         Image skinner1 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
         ImageView skinnerview1 = new ImageView (skinner1);
-        skinnerview1.setScaleX(0.8);
-        skinnerview1.setScaleY(0.8);
+        skinnerview1.setScaleX(0.7);
+        skinnerview1.setScaleY(0.7);
         skinnerview1.setLayoutX(100);
         skinnerview1.setLayoutY(50);
         root.getChildren().add(skinnerview1);
         
         Image skinner2 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
         ImageView skinnerview2 = new ImageView (skinner2);
-        skinnerview2.setScaleX(0.8);
-        skinnerview2.setScaleY(0.8);
+        skinnerview2.setScaleX(0.7);
+        skinnerview2.setScaleY(0.7);
         skinnerview2.setLayoutX(300);
         skinnerview2.setLayoutY(50);
         root.getChildren().add(skinnerview2);
         
         Image skinner3 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
         ImageView skinnerview3 = new ImageView (skinner3);
-        skinnerview3.setScaleX(0.8);
-        skinnerview3.setScaleY(0.8);
+        skinnerview3.setScaleX(0.7);
+        skinnerview3.setScaleY(0.7);
         skinnerview3.setLayoutX(500);
         skinnerview3.setLayoutY(50);
         root.getChildren().add(skinnerview3);
         
         Image skinner4 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
         ImageView skinnerview4 = new ImageView (skinner4);
-        skinnerview4.setScaleX(0.8);
-        skinnerview4.setScaleY(0.8);
+        skinnerview4.setScaleX(0.7);
+        skinnerview4.setScaleY(0.7);
         skinnerview4.setLayoutX(700);
         skinnerview4.setLayoutY(50);
         root.getChildren().add(skinnerview4);
         
         Image skinner5 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
         ImageView skinnerview5 = new ImageView (skinner5);
-        skinnerview5.setScaleX(0.8);
-        skinnerview5.setScaleY(0.8);
+        skinnerview5.setScaleX(0.7);
+        skinnerview5.setScaleY(0.7);
         skinnerview5.setLayoutX(900);
         skinnerview5.setLayoutY(50);
         root.getChildren().add(skinnerview5);
@@ -305,23 +309,56 @@ public class Main extends Application {
                 skinnerview1.setLayoutX(skinnerCorriendo1);
                 skinnerCorriendo1+=velocidadSkinner2;
                 
-                if (skinnerCorriendo1 >=150){
-                    velocidadSkinner2 = -1;
+                if (skinnerCorriendo1 >=250){
+                    velocidadSkinner2 = -2;
                 }
                 
                 if (skinnerCorriendo1 <=50){
-                    velocidadSkinner2 = 1;
+                    velocidadSkinner2 = 2;
                 }
                 
                 skinnerview2.setLayoutX(skinnerCorriendo2);
-                skinnerCorriendo2+=velocidadSkinner2;
+                skinnerCorriendo2+=velocidadSkinner3;
                 
-                if (skinnerCorriendo2 >=280){
-                    velocidadSkinner2 = -1;
+                if (skinnerCorriendo2 >=450){
+                    velocidadSkinner3 = -2;
                 }
                 
-                if (skinnerCorriendo2 <=180){
-                    velocidadSkinner2 = 1;
+                if (skinnerCorriendo2 <=250){
+                    velocidadSkinner3 = 2;
+                }
+                
+                skinnerview3.setLayoutX(skinnerCorriendo3);
+                skinnerCorriendo3+=velocidadSkinner4;
+                
+                if (skinnerCorriendo3 >=650){
+                    velocidadSkinner4 = -2;
+                }
+                
+                if (skinnerCorriendo3 <=250*2){
+                    velocidadSkinner4 = 2;
+                }
+                
+                skinnerview4.setLayoutX(skinnerCorriendo4);
+                skinnerCorriendo4+=velocidadSkinner5;
+                
+                if (skinnerCorriendo4 >=950){
+                    velocidadSkinner5 = -2;
+                }
+                
+                if (skinnerCorriendo4 <=250*3){
+                    velocidadSkinner5 = 2;
+                }
+                
+                skinnerview5.setLayoutX(skinnerCorriendo5);
+                skinnerCorriendo5+=velocidadSkinner6;
+                
+                if (skinnerCorriendo5 >=1250){
+                    velocidadSkinner6 = -2;
+                }
+                
+                if (skinnerCorriendo5 <=250*4){
+                    velocidadSkinner6 = 2;
                 }
             }
         };
