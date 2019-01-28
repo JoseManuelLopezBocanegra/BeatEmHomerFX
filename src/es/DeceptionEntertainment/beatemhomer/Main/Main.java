@@ -7,7 +7,6 @@ package es.deceptionentertainment.beatemhomer.Main;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.scene.shape.Circle;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -43,6 +42,9 @@ public class Main extends Application {
     int skinnerCorriendo3 = 250*2;
     int skinnerCorriendo4 = 250*3;
     int skinnerCorriendo5 = 250*4;
+    int rocaY = 600;
+    int rocaX = 540;
+    int movimientoRoca = 2;
             
     @Override
     public void start(Stage primaryStage) {
@@ -51,6 +53,8 @@ public class Main extends Application {
         primaryStage.setTitle("Beat Em Homer");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        //Imagenes
         
         Image fondo = new Image(getClass().getResourceAsStream("images/fondo.png")) {};
         ImageView fondoview1 = new ImageView(fondo);
@@ -70,10 +74,10 @@ public class Main extends Application {
         skinnerview.setScaleY(0.6);
         root.getChildren().add(skinnerview);
         
-        Image roca = new Image(getClass().getResourceAsStream("images/Roca.png")) {};
+        Image roca = new Image(getClass().getResourceAsStream("images/roca1.png")) {};
         ImageView rocaview1 = new ImageView(roca);
-        rocaview1.setScaleX(0.06);
-        rocaview1.setScaleY(0.06);
+        rocaview1.setLayoutX(540);
+        rocaview1.setLayoutY(600);
         root.getChildren().add(rocaview1);
         
         Image skinner1 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
@@ -114,17 +118,10 @@ public class Main extends Application {
         skinnerview5.setScaleY(0.7);
         skinnerview5.setLayoutX(900);
         skinnerview5.setLayoutY(50);
-        root.getChildren().add(skinnerview5);
-        /*
-        Image bob1 = new Image (getClass().getResourceAsStream("images/Bob.gif")) {};
-        ImageView bobview1 = new ImageView (bob1);
-        bobview1.setScaleX(0.55);
-        bobview1.setScaleY(0.55);
-        bobview1.setLayoutX(50);
-        bobview1.setLayoutY(50);
-        root.getChildren().add(bobview1);
-        */
-                
+        root.getChildren().add(skinnerview5);        
+        
+//Creación de personaje
+        
         Rectangle cabeza = new Rectangle();
         cabeza.setX(10);
         cabeza.setY(0);
@@ -257,6 +254,8 @@ public class Main extends Application {
         zapato2.setFill(Color.BLUE);
         root.getChildren().add(zapato2);
     
+        //Agrupar Personaje
+        
         Group groupBart = new Group();
         groupBart.getChildren().add(cabeza);
         groupBart.getChildren().add(nariz);
@@ -282,6 +281,8 @@ public class Main extends Application {
         groupBart.setScaleY(0.4);
         
         root.getChildren().add(groupBart);
+        
+        //Animaciones
         
         AnimationTimer animacionPersonaje = new AnimationTimer() {
             @Override
@@ -360,9 +361,21 @@ public class Main extends Application {
                 if (skinnerCorriendo5 <=250*4){
                     velocidadSkinner6 = 2;
                 }
+                
+                rocaview1.setLayoutX(rocaX);
+                rocaview1.setLayoutY(rocaY);
+                rocaY+=movimientoRoca;
+                movimientoRoca = -2;
+                
+                if (rocaY <= -10){
+                    rocaY = 600;
+                }
+                
             }
         };
         animacionPersonaje.start();
+        
+        //Movimiento del Personaje
         
          scene.setOnKeyPressed((KeyEvent event) -> {
              switch(event.getCode()) {
@@ -377,6 +390,11 @@ public class Main extends Application {
          scene.setOnKeyReleased((KeyEvent event) -> {
              movimientoBart = 0;
         });
+         
+         //Colisiones
+         
+         //public static Shape intersect(Shape Shape1, Shape Shape2)
+         //Shape.intersect(groupBart);
     }
     /**
      * @param args the command line arguments
