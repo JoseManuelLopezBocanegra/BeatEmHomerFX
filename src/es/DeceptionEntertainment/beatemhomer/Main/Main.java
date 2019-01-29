@@ -19,6 +19,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Shape;
 
 
 
@@ -365,10 +366,11 @@ public class Main extends Application {
                 rocaview1.setLayoutX(rocaX);
                 rocaview1.setLayoutY(rocaY);
                 rocaY+=movimientoRoca;
-                movimientoRoca = -2;
+                movimientoRoca = -15;
                 
                 if (rocaY <= -10){
                     rocaY = 600;
+                    rocaX = personajeX;
                 }
                 
             }
@@ -380,10 +382,10 @@ public class Main extends Application {
          scene.setOnKeyPressed((KeyEvent event) -> {
              switch(event.getCode()) {
                  case RIGHT:
-                     movimientoBart = 4;
+                     movimientoBart = 5;
                      break;
                  case LEFT:
-                     movimientoBart = -4;
+                     movimientoBart = -5;
                      break;
              }
         }); 
@@ -393,8 +395,8 @@ public class Main extends Application {
          
          //Colisiones
          
-         //public static Shape intersect(Shape Shape1, Shape Shape2)
-         //Shape.intersect(groupBart);
+         //public static Shape intersect(Shape Shape1, Shape Shape2);
+         //Shape.intersect
     }
     /**
      * @param args the command line arguments
