@@ -44,8 +44,9 @@ public class Main extends Application {
     int skinnerCorriendo4 = 250*3;
     int skinnerCorriendo5 = 250*4;
     int rocaY = 600;
-    int rocaX = 540;
+    int rocaX = 580;
     int movimientoRoca = 2;
+    
             
     @Override
     public void start(Stage primaryStage) {
@@ -76,10 +77,8 @@ public class Main extends Application {
         root.getChildren().add(skinnerview);
         
         Image roca = new Image(getClass().getResourceAsStream("images/roca1.png")) {};
-        ImageView rocaview1 = new ImageView(roca);
-        rocaview1.setLayoutX(540);
-        rocaview1.setLayoutY(600);
-        root.getChildren().add(rocaview1);
+        ImageView rocaView1 = new ImageView(roca);
+        root.getChildren().add(rocaView1);
         
         Image skinner1 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
         ImageView skinnerview1 = new ImageView (skinner1);
@@ -122,7 +121,7 @@ public class Main extends Application {
         root.getChildren().add(skinnerview5);        
         
 //Creación de personaje
-        
+
         Rectangle cabeza = new Rectangle();
         cabeza.setX(10);
         cabeza.setY(0);
@@ -254,6 +253,12 @@ public class Main extends Application {
         zapato2.setHeight(20);
         zapato2.setFill(Color.BLUE);
         root.getChildren().add(zapato2);
+        
+        Rectangle roca2 = new Rectangle();
+        roca2.setWidth(29);
+        roca2.setHeight(24);
+        roca2.setVisible(false);
+        root.getChildren().add(roca2);
     
         //Agrupar Personaje
         
@@ -282,6 +287,13 @@ public class Main extends Application {
         groupBart.setScaleY(0.4);
         
         root.getChildren().add(groupBart);
+        
+        Group grupoRoca = new Group();
+        grupoRoca.getChildren().add(roca2);
+        grupoRoca.getChildren().add(rocaView1);
+        
+        
+        root.getChildren().add(grupoRoca);
         
         //Animaciones
         
@@ -363,14 +375,14 @@ public class Main extends Application {
                     velocidadSkinner6 = 2;
                 }
                 
-                rocaview1.setLayoutX(rocaX);
-                rocaview1.setLayoutY(rocaY);
+                grupoRoca.setLayoutX(rocaX);
+                grupoRoca.setLayoutY(rocaY);
                 rocaY+=movimientoRoca;
                 movimientoRoca = -15;
                 
                 if (rocaY <= -10){
-                    rocaY = 600;
-                    rocaX = personajeX;
+                    rocaY = 650;
+                    rocaX = personajeX+20;
                 }
                 
             }
@@ -395,8 +407,8 @@ public class Main extends Application {
          
          //Colisiones
          
-         //public static Shape intersect(Shape Shape1, Shape Shape2);
-         //Shape.intersect
+         //Shape colision = Shape.intersect(circuloRoca, rectanguloSkinner);
+         //if (colision.getBoundInLocal().isEmpty());
     }
     /**
      * @param args the command line arguments
