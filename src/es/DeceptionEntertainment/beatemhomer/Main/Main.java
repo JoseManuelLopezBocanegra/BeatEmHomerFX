@@ -38,14 +38,15 @@ public class Main extends Application {
     int velocidadSkinner5 = 0;
     int velocidadSkinner6 = 0;
     int movimientoBart = 0;
-    int skinnerCorriendo1 = 50;
-    int skinnerCorriendo2 = 250;
-    int skinnerCorriendo3 = 250*2;
-    int skinnerCorriendo4 = 250*3;
-    int skinnerCorriendo5 = 250*4;
+    int skinnerCorriendo1 = 350;
+    int skinnerCorriendo2 = 550;
+    int skinnerCorriendo3 = 750;
+    int skinnerCorriendo4 = 950;
+    int skinnerCorriendo5 = 1150;
     int rocaY = 600;
     int rocaX = 580;
     int movimientoRoca = 2;
+    int score = 3;
     
             
     @Override
@@ -80,47 +81,27 @@ public class Main extends Application {
         ImageView rocaView1 = new ImageView(roca);
         root.getChildren().add(rocaView1);
         
-        Image skinner1 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        Image skinner1 = new Image (getClass().getResourceAsStream("images/Skinner5.png")) {};
         ImageView skinnerview1 = new ImageView (skinner1);
-        skinnerview1.setScaleX(0.7);
-        skinnerview1.setScaleY(0.7);
-        skinnerview1.setLayoutX(100);
-        skinnerview1.setLayoutY(50);
         root.getChildren().add(skinnerview1);
         
-        Image skinner2 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        Image skinner2 = new Image (getClass().getResourceAsStream("images/Skinner5.png")) {};
         ImageView skinnerview2 = new ImageView (skinner2);
-        skinnerview2.setScaleX(0.7);
-        skinnerview2.setScaleY(0.7);
-        skinnerview2.setLayoutX(300);
-        skinnerview2.setLayoutY(50);
         root.getChildren().add(skinnerview2);
         
-        Image skinner3 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        Image skinner3 = new Image (getClass().getResourceAsStream("images/Skinner5.png")) {};
         ImageView skinnerview3 = new ImageView (skinner3);
-        skinnerview3.setScaleX(0.7);
-        skinnerview3.setScaleY(0.7);
-        skinnerview3.setLayoutX(500);
-        skinnerview3.setLayoutY(50);
         root.getChildren().add(skinnerview3);
         
-        Image skinner4 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        Image skinner4 = new Image (getClass().getResourceAsStream("images/Skinner5.png")) {};
         ImageView skinnerview4 = new ImageView (skinner4);
-        skinnerview4.setScaleX(0.7);
-        skinnerview4.setScaleY(0.7);
-        skinnerview4.setLayoutX(700);
-        skinnerview4.setLayoutY(50);
         root.getChildren().add(skinnerview4);
         
-        Image skinner5 = new Image (getClass().getResourceAsStream("images/Skinner1.gif")) {};
+        Image skinner5 = new Image (getClass().getResourceAsStream("images/Skinner5.png")) {};
         ImageView skinnerview5 = new ImageView (skinner5);
-        skinnerview5.setScaleX(0.7);
-        skinnerview5.setScaleY(0.7);
-        skinnerview5.setLayoutX(900);
-        skinnerview5.setLayoutY(50);
         root.getChildren().add(skinnerview5);        
         
-//Creación de personaje
+        //Creación de personaje
 
         Rectangle cabeza = new Rectangle();
         cabeza.setX(10);
@@ -260,6 +241,36 @@ public class Main extends Application {
         roca2.setVisible(false);
         root.getChildren().add(roca2);
     
+        Rectangle skinner6 = new Rectangle();
+        skinner6.setWidth(90);
+        skinner6.setHeight(150);
+        skinner6.setVisible(false);
+        root.getChildren().add(skinner6);
+        
+        Rectangle skinner7 = new Rectangle();
+        skinner7.setWidth(90);
+        skinner7.setHeight(150);
+        skinner7.setVisible(false);
+        root.getChildren().add(skinner7);
+        
+        Rectangle skinner8 = new Rectangle();
+        skinner8.setWidth(90);
+        skinner8.setHeight(150);
+        skinner8.setVisible(false);
+        root.getChildren().add(skinner8);
+        
+        Rectangle skinner9 = new Rectangle();
+        skinner9.setWidth(90);
+        skinner9.setHeight(150);
+        skinner9.setVisible(false);
+        root.getChildren().add(skinner9);
+        
+        Rectangle skinner10 = new Rectangle();
+        skinner10.setWidth(90);
+        skinner10.setHeight(150);
+        skinner10.setVisible(false);
+        root.getChildren().add(skinner10);
+        
         //Agrupar Personaje
         
         Group groupBart = new Group();
@@ -291,10 +302,33 @@ public class Main extends Application {
         Group grupoRoca = new Group();
         grupoRoca.getChildren().add(roca2);
         grupoRoca.getChildren().add(rocaView1);
-        
-        
         root.getChildren().add(grupoRoca);
         
+        Group grupoSkinner1 = new Group();
+        grupoSkinner1.getChildren().add(skinner6);
+        grupoSkinner1.getChildren().add(skinnerview1);
+        root.getChildren().add(grupoSkinner1);
+        
+        Group grupoSkinner2 = new Group();
+        grupoSkinner2.getChildren().add(skinner7);
+        grupoSkinner2.getChildren().add(skinnerview2);
+        root.getChildren().add(grupoSkinner2);
+        
+        Group grupoSkinner3 = new Group();
+        grupoSkinner3.getChildren().add(skinner8);
+        grupoSkinner3.getChildren().add(skinnerview3);
+        root.getChildren().add(grupoSkinner3);
+        
+        Group grupoSkinner4 = new Group();
+        grupoSkinner4.getChildren().add(skinner9);
+        grupoSkinner4.getChildren().add(skinnerview4);
+        root.getChildren().add(grupoSkinner4);
+        
+        Group grupoSkinner5 = new Group();
+        grupoSkinner5.getChildren().add(skinner10);
+        grupoSkinner5.getChildren().add(skinnerview5);
+        root.getChildren().add(grupoSkinner5);
+
         //Animaciones
         
         AnimationTimer animacionPersonaje = new AnimationTimer() {
@@ -320,59 +354,64 @@ public class Main extends Application {
                     velocidadSkinner = 3;
                 }
                 
-                skinnerview1.setLayoutX(skinnerCorriendo1);
+                grupoSkinner1.setLayoutX(skinnerCorriendo1);
+                grupoSkinner1.setLayoutY(30);
                 skinnerCorriendo1+=velocidadSkinner2;
-                
-                if (skinnerCorriendo1 >=250){
-                    velocidadSkinner2 = -2;
+                    
+                if (skinnerCorriendo1 >=350){
+                    velocidadSkinner2 = -3;
                 }
                 
-                if (skinnerCorriendo1 <=50){
-                    velocidadSkinner2 = 2;
+                if (skinnerCorriendo1 <=250){
+                    velocidadSkinner2 = 3;
                 }
                 
-                skinnerview2.setLayoutX(skinnerCorriendo2);
+                grupoSkinner2.setLayoutX(skinnerCorriendo2);
+                grupoSkinner2.setLayoutY(30);
                 skinnerCorriendo2+=velocidadSkinner3;
                 
-                if (skinnerCorriendo2 >=450){
-                    velocidadSkinner3 = -2;
+                if (skinnerCorriendo2 >=550){
+                    velocidadSkinner3 = -3;
                 }
                 
-                if (skinnerCorriendo2 <=250){
-                    velocidadSkinner3 = 2;
+                if (skinnerCorriendo2 <=450){
+                    velocidadSkinner3 = 3;
                 }
                 
-                skinnerview3.setLayoutX(skinnerCorriendo3);
+                grupoSkinner3.setLayoutX(skinnerCorriendo3);
+                grupoSkinner3.setLayoutY(30);
                 skinnerCorriendo3+=velocidadSkinner4;
                 
-                if (skinnerCorriendo3 >=650){
-                    velocidadSkinner4 = -2;
+                if (skinnerCorriendo3 >=750){
+                    velocidadSkinner4 = -3;
                 }
                 
-                if (skinnerCorriendo3 <=250*2){
-                    velocidadSkinner4 = 2;
+                if (skinnerCorriendo3 <=650){
+                    velocidadSkinner4 = 3;
                 }
                 
-                skinnerview4.setLayoutX(skinnerCorriendo4);
+                grupoSkinner4.setLayoutX(skinnerCorriendo4);
+                grupoSkinner4.setLayoutY(30);
                 skinnerCorriendo4+=velocidadSkinner5;
                 
                 if (skinnerCorriendo4 >=950){
-                    velocidadSkinner5 = -2;
+                    velocidadSkinner5 = -3;
                 }
                 
-                if (skinnerCorriendo4 <=250*3){
-                    velocidadSkinner5 = 2;
+                if (skinnerCorriendo4 <=850){
+                    velocidadSkinner5 = 3;
                 }
                 
-                skinnerview5.setLayoutX(skinnerCorriendo5);
+                grupoSkinner5.setLayoutX(skinnerCorriendo5);
+                grupoSkinner5.setLayoutY(30);
                 skinnerCorriendo5+=velocidadSkinner6;
                 
-                if (skinnerCorriendo5 >=1250){
-                    velocidadSkinner6 = -2;
+                if (skinnerCorriendo5 >=1150){
+                    velocidadSkinner6 = -3;
                 }
                 
-                if (skinnerCorriendo5 <=250*4){
-                    velocidadSkinner6 = 2;
+                if (skinnerCorriendo5 <=1050){
+                    velocidadSkinner6 = 3;
                 }
                 
                 grupoRoca.setLayoutX(rocaX);
@@ -385,6 +424,46 @@ public class Main extends Application {
                     rocaX = personajeX+20;
                 }
                 
+                Shape shapeColision = Shape.intersect(roca2, skinner6);
+                boolean colisionVacia = shapeColision.getBoundsInLocal().isEmpty();
+                if (colisionVacia == false) {
+                    rocaY = 650;
+                    rocaX = personajeX+20;
+                    score ++ ;
+                    root.getChildren().remove(grupoSkinner1);
+                }
+                Shape shapeColision2 = Shape.intersect(roca2, skinner7);
+                boolean colisionVacia2 = shapeColision2.getBoundsInLocal().isEmpty();
+                if (colisionVacia2 == false) {
+                    rocaY = 650;
+                    rocaX = personajeX+20;
+                    score ++ ;
+                    root.getChildren().remove(grupoSkinner2);
+                }
+                Shape shapeColision3 = Shape.intersect(roca2, skinner8);
+                boolean colisionVacia3 = shapeColision3.getBoundsInLocal().isEmpty();
+                if (colisionVacia3 == false) {
+                    rocaY = 650;
+                    rocaX = personajeX+20;
+                    score ++ ;
+                    root.getChildren().remove(grupoSkinner3);
+                }
+                Shape shapeColision4 = Shape.intersect(roca2, skinner9);
+                boolean colisionVacia4 = shapeColision4.getBoundsInLocal().isEmpty();
+                if (colisionVacia4 == false) {
+                    rocaY = 650;
+                    rocaX = personajeX+20;
+                    score ++ ;
+                    root.getChildren().remove(grupoSkinner4);
+                }
+                Shape shapeColision5 = Shape.intersect(roca2, skinner10);
+                boolean colisionVacia5 = shapeColision5.getBoundsInLocal().isEmpty();
+                if (colisionVacia5 == false) {
+                    rocaY = 650;
+                    rocaX = personajeX+20;
+                    score ++ ;
+                    root.getChildren().remove(grupoSkinner5);
+                }
             }
         };
         animacionPersonaje.start();
@@ -407,8 +486,7 @@ public class Main extends Application {
          
          //Colisiones
          
-         //Shape colision = Shape.intersect(circuloRoca, rectanguloSkinner);
-         //if (colision.getBoundInLocal().isEmpty());
+         
     }
     /**
      * @param args the command line arguments
