@@ -46,7 +46,6 @@ public class Main extends Application {
     int rocaY = 600;
     int rocaX = 580;
     int movimientoRoca = 2;
-    int golpe = 3;
     int libroY = 180;
     int libroX = 350;
     int libro2Y = 180;
@@ -62,7 +61,17 @@ public class Main extends Application {
     int velocidadLibro3 = 0;
     int velocidadLibro4 = 0;
     int velocidadLibro5 = 0;
-            
+    int golpe1 = 3;
+    int golpe2 = 3;
+    int golpe3 = 3;
+    int golpe4 = 3;
+    int golpe5 = 3;
+    int golpe6 = 3;
+    int golpe7 = 3;
+    int golpe8 = 3;
+    int golpe9 = 3;
+    int golpe10 = 3;
+    
     @Override
     public void start(Stage primaryStage) {
         Pane root = new Pane();
@@ -529,7 +538,7 @@ public class Main extends Application {
                 grupoLibro1.setLayoutX(libroX);
                 grupoLibro1.setLayoutY(libroY);
                 libroY+=velocidadLibro1;
-                velocidadLibro1 = 8;
+                velocidadLibro1 = 6;
                 
                 if (libroY >= 880){
                     libroY = 180;
@@ -539,95 +548,126 @@ public class Main extends Application {
                 boolean sk1Visible = grupoSkinner1.isVisible();
                     if(sk1Visible == false) {
                             root.getChildren().remove(grupoSkinner1);
-                            //root.getChildren().remove(grupoLibro1);
-                            velocidadLibro1 = -10;
+                            root.getChildren().remove(grupoLibro1);
+                            velocidadLibro1 = 0;
+                            libroY = 0;
                     }
                     
                 grupoLibro2.setLayoutX(libro2X);
                 grupoLibro2.setLayoutY(libro2Y);
                 libro2Y+=velocidadLibro2;
-                velocidadLibro2 = 8;
+                velocidadLibro2 = 6;
                 
                 if (libro2Y >= 880){
                     libro2Y = 180;
                     libro2X = skinnerCorriendo2+20;
                 }
                 
+                boolean sk2Visible = grupoSkinner2.isVisible();
+                    if(sk2Visible == false) {
+                            root.getChildren().remove(grupoSkinner2);
+                            root.getChildren().remove(grupoLibro2);
+                            velocidadLibro2 = 0;
+                            libro2Y = 0;
+                    }
                 grupoLibro3.setLayoutX(libro3X);
                 grupoLibro3.setLayoutY(libro3Y);
                 libro3Y+=velocidadLibro3;
-                velocidadLibro3 = 8;
+                velocidadLibro3 = 6;
                 
                 if (libro3Y >= 880){
                     libro3Y = 180;
                     libro3X = skinnerCorriendo3+20;
                 }
                 
+                boolean sk3Visible = grupoSkinner3.isVisible();
+                    if(sk3Visible == false) {
+                            root.getChildren().remove(grupoSkinner3);
+                            root.getChildren().remove(grupoLibro3);
+                            velocidadLibro3 = 0;
+                            libro3Y = 0;
+                    }
                 grupoLibro4.setLayoutX(libro4X);
                 grupoLibro4.setLayoutY(libro4Y);
                 libro4Y+=velocidadLibro4;
-                velocidadLibro4 = 8;
+                velocidadLibro4 = 6;
                 
                 if (libro4Y >= 880){
                     libro4Y = 180;
                     libro4X = skinnerCorriendo4+20;
                 }
                 
+                boolean sk4Visible = grupoSkinner4.isVisible();
+                    if(sk4Visible == false) {
+                            root.getChildren().remove(grupoSkinner4);
+                            root.getChildren().remove(grupoLibro4);
+                            velocidadLibro4 = 0;
+                            libro4Y = 0;
+                    }
                 grupoLibro5.setLayoutX(libro5X);
                 grupoLibro5.setLayoutY(libro5Y);
                 libro5Y+=velocidadLibro5;
-                velocidadLibro5 = 8;
+                velocidadLibro5 = 6;
                 
                 if (libro5Y >= 880){
                     libro5Y = 180;
                     libro5X = skinnerCorriendo5+20;
                 }
                 
+                boolean sk5Visible = grupoSkinner5.isVisible();
+                    if(sk5Visible == false) {
+                            root.getChildren().remove(grupoSkinner5);
+                            root.getChildren().remove(grupoLibro5);
+                            velocidadLibro5 = 0;
+                            libro5Y = 0;
+                    }
                 Shape shapeColision = Shape.intersect(roca2, rectSkinner1);
                 boolean colisionVacia = shapeColision.getBoundsInLocal().isEmpty();
                 if (colisionVacia == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe ++;
+                    golpe1 -- ;
+                    grupoSkinner1.setVisible(false);
                 }
+                
                 Shape shapeColision2 = Shape.intersect(roca2, rectSkinner2);
                 boolean colisionVacia2 = shapeColision2.getBoundsInLocal().isEmpty();
                 if (colisionVacia2 == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe ++ ;
-                    root.getChildren().remove(grupoSkinner2);
+                    golpe2 ++ ;
+                    grupoSkinner2.setVisible(false);
                 }
                 Shape shapeColision3 = Shape.intersect(roca2, rectSkinner3);
                 boolean colisionVacia3 = shapeColision3.getBoundsInLocal().isEmpty();
                 if (colisionVacia3 == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe ++ ;
-                    root.getChildren().remove(grupoSkinner3);
+                    golpe3 ++ ;
+                    grupoSkinner3.setVisible(false);
                 }
                 Shape shapeColision4 = Shape.intersect(roca2, rectSkinner4);
                 boolean colisionVacia4 = shapeColision4.getBoundsInLocal().isEmpty();
                 if (colisionVacia4 == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe ++ ;
-                    root.getChildren().remove(grupoSkinner4);
+                    golpe4 ++ ;
+                    grupoSkinner4.setVisible(false);
                 }
                 Shape shapeColision5 = Shape.intersect(roca2, rectSkinner5);
                 boolean colisionVacia5 = shapeColision5.getBoundsInLocal().isEmpty();
                 if (colisionVacia5 == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe ++ ;
-                    root.getChildren().remove(grupoSkinner5);
+                    golpe5 ++ ;
+                    grupoSkinner5.setVisible(false);
                 }   
                 Shape shapeColision6 = Shape.intersect(rectLibro1, cabeza);
                 boolean colisionVacia6 = shapeColision6.getBoundsInLocal().isEmpty();
                 if (colisionVacia6 == false) {
                     libroY = 180;
                     libroX = skinnerCorriendo1+20;
-                    golpe ++ ;
+                    golpe6 ++ ;
                     root.getChildren().remove(groupBart);
                     root.getChildren().remove(corazonView3);
                 }
@@ -636,7 +676,7 @@ public class Main extends Application {
                 if (colisionVacia7 == false) {
                     libro2Y = 180;
                     libro2X = skinnerCorriendo2+20;
-                    golpe ++ ;
+                    golpe7 ++ ;
                     root.getChildren().remove(groupBart);
                     root.getChildren().remove(corazonView3);
                 }
@@ -645,7 +685,7 @@ public class Main extends Application {
                 if (colisionVacia8 == false) {
                     libro3Y = 180;
                     libro3X = skinnerCorriendo3+20;
-                    golpe ++ ;
+                    golpe8 ++ ;
                     root.getChildren().remove(groupBart);
                     root.getChildren().remove(corazonView3);
                 }
@@ -654,7 +694,7 @@ public class Main extends Application {
                 if (colisionVacia9 == false) {
                     libro4Y = 180;
                     libro4X = skinnerCorriendo4+20;
-                    golpe ++ ;
+                    golpe9 ++ ;
                     root.getChildren().remove(groupBart);
                     root.getChildren().remove(corazonView3);
                 }
@@ -663,7 +703,7 @@ public class Main extends Application {
                 if (colisionVacia10 == false) {
                     libro5Y = 180;
                     libro5X = skinnerCorriendo5+20;
-                    golpe ++ ;
+                    golpe10 ++ ;
                     root.getChildren().remove(groupBart);
                     root.getChildren().remove(corazonView3);
                 }
