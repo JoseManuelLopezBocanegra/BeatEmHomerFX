@@ -20,6 +20,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 
 
@@ -71,6 +73,8 @@ public class Main extends Application {
     int golpe8 = 3;
     int golpe9 = 3;
     int golpe10 = 3;
+    int golpeBart= 3;
+    int tamañoTexto = 30;
     
     @Override
     public void start(Stage primaryStage) {
@@ -79,6 +83,12 @@ public class Main extends Application {
         primaryStage.setTitle("Beat Em Homer");
         primaryStage.setScene(scene);
         primaryStage.show();
+        //Título
+//        Text títuloFinal = new Text ("DERROTA");
+//        títuloFinal.setFont(Font.font(tamañoTexto));
+//        títuloFinal.setFill(Color.RED);
+//        títuloFinal.setLayoutX(450);
+//        títuloFinal.setLayoutY(450);
         
         //Imagenes
         
@@ -614,6 +624,8 @@ public class Main extends Application {
                     libro5X = skinnerCorriendo5+20;
                 }
                 
+                // Colisiones
+                
                 boolean sk5Visible = grupoSkinner5.isVisible();
                     if(sk5Visible == false) {
                             root.getChildren().remove(grupoSkinner5);
@@ -624,10 +636,13 @@ public class Main extends Application {
                 Shape shapeColision = Shape.intersect(roca2, rectSkinner1);
                 boolean colisionVacia = shapeColision.getBoundsInLocal().isEmpty();
                 if (colisionVacia == false) {
+                    golpe1 -- ;
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe1 -- ;
-                    grupoSkinner1.setVisible(false);
+                        if (golpe1 == 0) {
+                            grupoSkinner1.setVisible(false);
+                        }
+                    System.out.println(golpe1);
                 }
                 
                 Shape shapeColision2 = Shape.intersect(roca2, rectSkinner2);
@@ -635,79 +650,129 @@ public class Main extends Application {
                 if (colisionVacia2 == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe2 ++ ;
-                    grupoSkinner2.setVisible(false);
+                    golpe2 -- ;
+                        if (golpe2 == 0) {
+                        grupoSkinner2.setVisible(false);
+                        }
                 }
                 Shape shapeColision3 = Shape.intersect(roca2, rectSkinner3);
                 boolean colisionVacia3 = shapeColision3.getBoundsInLocal().isEmpty();
                 if (colisionVacia3 == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe3 ++ ;
-                    grupoSkinner3.setVisible(false);
+                    golpe3 -- ;
+                        if (golpe3 == 0) {
+                            grupoSkinner3.setVisible(false);
+                        }
                 }
                 Shape shapeColision4 = Shape.intersect(roca2, rectSkinner4);
                 boolean colisionVacia4 = shapeColision4.getBoundsInLocal().isEmpty();
                 if (colisionVacia4 == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe4 ++ ;
-                    grupoSkinner4.setVisible(false);
+                    golpe4 -- ;
+                        if (golpe4 == 0) { 
+                            grupoSkinner4.setVisible(false);
+                        }
                 }
                 Shape shapeColision5 = Shape.intersect(roca2, rectSkinner5);
                 boolean colisionVacia5 = shapeColision5.getBoundsInLocal().isEmpty();
                 if (colisionVacia5 == false) {
                     rocaY = 650;
                     rocaX = personajeX+20;
-                    golpe5 ++ ;
-                    grupoSkinner5.setVisible(false);
+                    golpe5 -- ;
+                        if (golpe5 == 0) {
+                            grupoSkinner5.setVisible(false);
+                        }
                 }   
                 Shape shapeColision6 = Shape.intersect(rectLibro1, cabeza);
                 boolean colisionVacia6 = shapeColision6.getBoundsInLocal().isEmpty();
                 if (colisionVacia6 == false) {
                     libroY = 180;
                     libroX = skinnerCorriendo1+20;
-                    golpe6 ++ ;
-                    root.getChildren().remove(groupBart);
-                    root.getChildren().remove(corazonView3);
+                    golpeBart -- ;
+                        if (golpeBart == 2) {
+                            root.getChildren().remove(corazonView3);
+                        }
+                        if (golpeBart == 1) {
+                            root.getChildren().remove(corazonView2);
+                        }
+                        if (golpeBart == 0) {
+                            root.getChildren().remove(corazonView1);
+                            root.getChildren().remove(groupBart);
+                        }
                 }
                 Shape shapeColision7 = Shape.intersect(rectLibro2, cabeza);
                 boolean colisionVacia7 = shapeColision7.getBoundsInLocal().isEmpty();
                 if (colisionVacia7 == false) {
                     libro2Y = 180;
                     libro2X = skinnerCorriendo2+20;
-                    golpe7 ++ ;
-                    root.getChildren().remove(groupBart);
-                    root.getChildren().remove(corazonView3);
+                    golpeBart -- ;
+                        if (golpeBart == 2) {
+                            root.getChildren().remove(corazonView3);
+                        }
+                        if (golpeBart == 1) {
+                            root.getChildren().remove(corazonView2);
+                        }
+                        if (golpeBart == 0) {
+                            root.getChildren().remove(corazonView1);
+                            root.getChildren().remove(groupBart);
+                            
+                        }
                 }
                 Shape shapeColision8 = Shape.intersect(rectLibro3, cabeza);
                 boolean colisionVacia8 = shapeColision8.getBoundsInLocal().isEmpty();
                 if (colisionVacia8 == false) {
                     libro3Y = 180;
                     libro3X = skinnerCorriendo3+20;
-                    golpe8 ++ ;
-                    root.getChildren().remove(groupBart);
-                    root.getChildren().remove(corazonView3);
+                    golpeBart -- ;
+                        if (golpeBart == 2) {
+                            root.getChildren().remove(corazonView3);
+                        }
+                        if (golpeBart == 1) {
+                            root.getChildren().remove(corazonView2);
+                        }
+                        if (golpeBart == 0) {
+                            root.getChildren().remove(corazonView1);
+                            root.getChildren().remove(groupBart);
+                        }
                 }
                 Shape shapeColision9 = Shape.intersect(rectLibro4, cabeza);
                 boolean colisionVacia9 = shapeColision9.getBoundsInLocal().isEmpty();
                 if (colisionVacia9 == false) {
                     libro4Y = 180;
                     libro4X = skinnerCorriendo4+20;
-                    golpe9 ++ ;
-                    root.getChildren().remove(groupBart);
-                    root.getChildren().remove(corazonView3);
+                    golpeBart -- ;
+                        if (golpeBart == 2) {
+                            root.getChildren().remove(corazonView3);
+                        }
+                        if (golpeBart == 1) {
+                            root.getChildren().remove(corazonView2);
+                        }
+                        if (golpeBart == 0) {
+                            root.getChildren().remove(corazonView1);
+                            root.getChildren().remove(groupBart);
+                        }
                 }
                 Shape shapeColision10 = Shape.intersect(rectLibro5, cabeza);
                 boolean colisionVacia10 = shapeColision10.getBoundsInLocal().isEmpty();
                 if (colisionVacia10 == false) {
                     libro5Y = 180;
                     libro5X = skinnerCorriendo5+20;
-                    golpe10 ++ ;
-                    root.getChildren().remove(groupBart);
-                    root.getChildren().remove(corazonView3);
+                    golpeBart -- ;
+                        if (golpeBart == 2) {
+                            root.getChildren().remove(corazonView3);
+                        }
+                        if (golpeBart == 1) {
+                            root.getChildren().remove(corazonView2);
+                        }
+                        if (golpeBart == 0) {
+                            root.getChildren().remove(corazonView1);
+                            root.getChildren().remove(groupBart);
+                        }
+                        System.out.println(golpe10);
                 }
-            }
+            }   
         };
         animacionPersonaje.start();
         
@@ -726,10 +791,6 @@ public class Main extends Application {
          scene.setOnKeyReleased((KeyEvent event) -> {
              movimientoBart = 0;
         });
-         
-         //Colisiones
-         
-         
     }
     /**
      * @param args the command line arguments
