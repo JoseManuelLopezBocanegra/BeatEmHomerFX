@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package es.deceptionentertainment.beatemhomer.Main;
-
+//Clases
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.shape.Circle;
@@ -20,8 +20,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Shape;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+//import javafx.scene.text.Font;
+//import javafx.scene.text.Text;
 
 
 
@@ -30,6 +31,7 @@ import javafx.scene.text.Text;
  * @author Manu López
  */
 public class Main extends Application {
+    //Declaracion de variables
     int personajeX = 550;
     int velocidadX = 3;
     int skinnerVolador = 30;
@@ -63,11 +65,11 @@ public class Main extends Application {
     int velocidadLibro3 = 0;
     int velocidadLibro4 = 0;
     int velocidadLibro5 = 0;
-    int golpe1 = 3;
-    int golpe2 = 3;
-    int golpe3 = 3;
-    int golpe4 = 3;
-    int golpe5 = 3;
+    int golpe1 = 5;
+    int golpe2 = 5;
+    int golpe3 = 5;
+    int golpe4 = 5;
+    int golpe5 = 5;
     int golpe6 = 3;
     int golpe7 = 3;
     int golpe8 = 3;
@@ -75,7 +77,38 @@ public class Main extends Application {
     int golpe10 = 3;
     int golpeBart= 3;
     int tamañoTexto = 30;
+    int marcador = 0;
+    Text marcadorText = new Text ("0");
     
+    public void reinicio() {
+    personajeX = 550;
+    skinnerVolador = 30;
+    skinnerCorriendo1 = 350;
+    skinnerCorriendo2 = 550;
+    skinnerCorriendo3 = 750;
+    skinnerCorriendo4 = 950;
+    skinnerCorriendo5 = 1150;
+    rocaY = 600;
+    rocaX = 580;
+    libroY = 180;
+    libroX = 350;
+    libro2Y = 180;
+    libro2X = 550;
+    libro3Y = 180;
+    libro3X = 750;
+    libro4Y = 180;
+    libro4X = 950;
+    libro5Y = 180;
+    libro5X = 1150;
+    marcador = 0;
+    golpeBart = 3;
+    golpe1 = 5;
+    golpe2 = 5;
+    golpe3 = 5;
+    golpe4 = 5;
+    golpe5 = 5;
+}
+    //Funcion
     @Override
     public void start(Stage primaryStage) {
         Pane root = new Pane();
@@ -83,14 +116,18 @@ public class Main extends Application {
         primaryStage.setTitle("Beat Em Homer");
         primaryStage.setScene(scene);
         primaryStage.show();
-        //Título
-//        Text títuloFinal = new Text ("DERROTA");
-//        títuloFinal.setFont(Font.font(tamañoTexto));
-//        títuloFinal.setFill(Color.RED);
-//        títuloFinal.setLayoutX(450);
-//        títuloFinal.setLayoutY(450);
         
-        //Imagenes
+        //Implementación de cada uno de las imagenes usadas en el juego.
+        
+        
+        Image gameOver1 = new Image (getClass().getResourceAsStream("images/GameOver.png")) {};
+        ImageView gameOver = new ImageView();
+        root.getChildren().add(gameOver);
+        gameOver.setX(-185);
+        gameOver.setY(-170);
+        gameOver.setFitWidth(950);
+        gameOver.setFitHeight(750);
+        gameOver.setVisible(false);
         
         Image fondo = new Image(getClass().getResourceAsStream("images/fondo.png")) {};
         ImageView fondoview1 = new ImageView(fondo);
@@ -169,7 +206,7 @@ public class Main extends Application {
         corazonView3.setLayoutX (1402-100);
         root.getChildren().add(corazonView3);
         
-        //Creación de personaje
+      //Creación del personaje, formado por rectangulos, triangulos y circulos.
 
         Rectangle cabeza = new Rectangle();
         cabeza.setX(10);
@@ -369,7 +406,7 @@ public class Main extends Application {
         rectLibro5.setVisible(false);
         root.getChildren().add(rectLibro5);
         
-        //Agrupar Personaje
+        //Agrupación de imagenes, polígonos, y parte de las colisiones.
         
         Group groupBart = new Group();
         groupBart.getChildren().add(cabeza);
@@ -450,7 +487,7 @@ public class Main extends Application {
         grupoLibro5.getChildren().add(libroview5);
         root.getChildren().add(grupoLibro5);
 
-        //Animaciones
+        //Animaciones de cada uno de los elementos de la pantalla (libros, roca, personajes secundarios y principal).
         
         AnimationTimer animacionPersonaje = new AnimationTimer() {
             @Override
@@ -463,6 +500,9 @@ public class Main extends Application {
                 if(personajeX >1375) {
                     personajeX = 1375;
                 }
+                
+                marcador ++;
+                marcadorText.setText(String.valueOf(marcador));
                 
                 skinnerview.setLayoutX(skinnerVolador);
                 skinnerVolador+=velocidadSkinner;
@@ -560,7 +600,7 @@ public class Main extends Application {
                             root.getChildren().remove(grupoSkinner1);
                             root.getChildren().remove(grupoLibro1);
                             velocidadLibro1 = 0;
-                            libroY = 0;
+                            libroY = 0; 
                     }
                     
                 grupoLibro2.setLayoutX(libro2X);
@@ -624,7 +664,8 @@ public class Main extends Application {
                     libro5X = skinnerCorriendo5+20;
                 }
                 
-                // Colisiones
+                // Colisiones de cada uno de los personajes de nuestro juego. Cada una de ellas con una
+                //velocidad y un movimiento diferente.
                 
                 boolean sk5Visible = grupoSkinner5.isVisible();
                     if(sk5Visible == false) {
@@ -642,7 +683,6 @@ public class Main extends Application {
                         if (golpe1 == 0) {
                             grupoSkinner1.setVisible(false);
                         }
-                    System.out.println(golpe1);
                 }
                 
                 Shape shapeColision2 = Shape.intersect(roca2, rectSkinner2);
@@ -699,7 +739,12 @@ public class Main extends Application {
                         }
                         if (golpeBart == 0) {
                             root.getChildren().remove(corazonView1);
-                            root.getChildren().remove(groupBart);
+                            reinicio();
+                            grupoSkinner1.setVisible(true);
+                            grupoSkinner2.setVisible(true);
+                            grupoSkinner3.setVisible(true);
+                            grupoSkinner4.setVisible(true);
+                            grupoSkinner5.setVisible(true);
                         }
                 }
                 Shape shapeColision7 = Shape.intersect(rectLibro2, cabeza);
@@ -716,8 +761,12 @@ public class Main extends Application {
                         }
                         if (golpeBart == 0) {
                             root.getChildren().remove(corazonView1);
-                            root.getChildren().remove(groupBart);
-                            
+                            reinicio();
+                            grupoSkinner1.setVisible(true);
+                            grupoSkinner2.setVisible(true);
+                            grupoSkinner3.setVisible(true);
+                            grupoSkinner4.setVisible(true);
+                            grupoSkinner5.setVisible(true);
                         }
                 }
                 Shape shapeColision8 = Shape.intersect(rectLibro3, cabeza);
@@ -734,7 +783,12 @@ public class Main extends Application {
                         }
                         if (golpeBart == 0) {
                             root.getChildren().remove(corazonView1);
-                            root.getChildren().remove(groupBart);
+                            reinicio();
+                            grupoSkinner1.setVisible(true);
+                            grupoSkinner2.setVisible(true);
+                            grupoSkinner3.setVisible(true);
+                            grupoSkinner4.setVisible(true);
+                            grupoSkinner5.setVisible(true);
                         }
                 }
                 Shape shapeColision9 = Shape.intersect(rectLibro4, cabeza);
@@ -751,7 +805,12 @@ public class Main extends Application {
                         }
                         if (golpeBart == 0) {
                             root.getChildren().remove(corazonView1);
-                            root.getChildren().remove(groupBart);
+                            reinicio();
+                            grupoSkinner1.setVisible(true);
+                            grupoSkinner2.setVisible(true);
+                            grupoSkinner3.setVisible(true);
+                            grupoSkinner4.setVisible(true);
+                            grupoSkinner5.setVisible(true);
                         }
                 }
                 Shape shapeColision10 = Shape.intersect(rectLibro5, cabeza);
@@ -768,15 +827,19 @@ public class Main extends Application {
                         }
                         if (golpeBart == 0) {
                             root.getChildren().remove(corazonView1);
-                            root.getChildren().remove(groupBart);
-                        }
-                        System.out.println(golpe10);
+                            reinicio();
+                            grupoSkinner1.setVisible(true);
+                            grupoSkinner2.setVisible(true);
+                            grupoSkinner3.setVisible(true);
+                            grupoSkinner4.setVisible(true);
+                            grupoSkinner5.setVisible(true);
+                        }  
                 }
             }   
         };
         animacionPersonaje.start();
         
-        //Movimiento del Personaje
+        //Movimiento del Personaje, creado a partir de switches.
         
          scene.setOnKeyPressed((KeyEvent event) -> {
              switch(event.getCode()) {
